@@ -1,5 +1,7 @@
 # Shovel
 
+[![Build Status](https://travis-ci.org/mdwheele/shovel.svg?branch=master)](https://travis-ci.org/mdwheele/shovel)
+
 **Yeah, don't use this...**
 
 A tool to shovel data from one place to another.
