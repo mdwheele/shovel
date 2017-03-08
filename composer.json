@@ -22,8 +22,5 @@
             "Shovel\\": ["src/", "tests/"]
         }
     },
-    "provides": {
-        "ext-oci8": "*"
-    },
     "minimum-stability": "dev"
 }
