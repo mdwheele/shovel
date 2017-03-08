@@ -2,7 +2,7 @@
 
 namespace Shovel;
 
-class ShovelTest extends TestCase
+interface Message
 {
 
 }

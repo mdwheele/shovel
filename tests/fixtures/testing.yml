@@ -1,20 +1,26 @@
 ---
 src:
   driver: oracle
-  dsn: oci:dbname=//localhost:1521/xe.oracle.docker
+  host: localhost
+  port: 1521
+  database: xe
   username: system
   password: oracle
 
 dest:
   driver: mysql
-  dsn: mysql:host=localhost;port=3306;dbname=homestead
+  host: localhost
+  port: 3306
+  database: homestead
   username: homestead
   password: secret
+
+before: ~
 
 tables:
   - PS_NC_HELLO_WORLD
   - PS_NC_HELLO_CONTINENT
   - PS_NC_HELLO_COUNTRY
 
-transforms:
+after:
   - SomeClassNameInPipeline
