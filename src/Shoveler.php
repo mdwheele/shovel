@@ -52,6 +52,34 @@ class Shoveler
         $this->announce(new ShovelsPickedUp());
     }
 
+    /**
+     * @return bool
+     */
+    public function hasBrokenGround()
+    {
+        $dest = $this->destination->getConnection();
+
+        foreach ($this->instructions->getTables() as $table) {
+            if (! $dest->table($table)->exists()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function breakGround()
+    {
+        $src = $this->source->getConnection();
+        $dest = $this->destination->getConnection();
+
+        foreach ($this->instructions->getTables() as $table) {
+            if (! $src->getSchemaBuilder()->hasTable($table)) {
+                throw ShovelException::sourceTableDoesntExist($table);
+            }
+        }
+    }
+
     public function dig()
     {
 

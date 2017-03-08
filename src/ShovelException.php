@@ -18,4 +18,9 @@ class ShovelException extends \Exception
     {
         return new static('You must specify a destination in your instructions.');
     }
+
+    public static function sourceTableDoesntExist($table)
+    {
+        return new static(sprintf('[%s] does not exist in source.', $table));
+    }
 }
