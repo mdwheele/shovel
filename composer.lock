@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "814bdd1fadef880faafbe10135e1a8a7",
+    "content-hash": "61ebfff754f9c05ace9390a72ecaa6b9",
     "packages": [
         {
             "name": "psr/log",
@@ -290,6 +290,51 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2017-03-07 16:54:31"
+        },
+        {
+            "name": "taq/pdooci",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/taq/pdooci.git",
+                "reference": "898a8fcef39b7cf748454c06e98c45baecffca94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/taq/pdooci/zipball/898a8fcef39b7cf748454c06e98c45baecffca94",
+                "reference": "898a8fcef39b7cf748454c06e98c45baecffca94",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PDOOCI\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Eustaquio Rangel",
+                    "email": "eustaquiorangel@gmail.com",
+                    "homepage": "http://eustaquiorangel.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Replacement for the PHP PDO OCI class",
+            "homepage": "http://github.com/taq/pdooci",
+            "keywords": [
+                "oci",
+                "oracle",
+                "pdo",
+                "pdo_oci"
+            ],
+            "time": "2016-09-24T21:51:27+00:00"
         }
     ],
     "packages-dev": [
