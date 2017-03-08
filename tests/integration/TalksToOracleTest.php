@@ -1,11 +1,16 @@
 <?php
 
+namespace Shovel;
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Yajra\Oci8\Connectors\OracleConnector;
 use Yajra\Oci8\Oci8Connection;
 use Yajra\Pdo\Oci8;
 
-class TalksToOracleTest extends \PHPUnit\Framework\TestCase
+/**
+ * @skipIfTravis
+ */
+class TalksToOracleTest extends TestCase
 {
     private $connection = null;
 
@@ -70,7 +75,7 @@ class TalksToOracleTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('Hello, World!', $row->msg);
     }
 
-    protected function getCapsule()
+    private function getCapsule()
     {
         $capsule = new Capsule;
 
