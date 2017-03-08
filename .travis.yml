@@ -5,8 +5,15 @@ services:
   - docker
 
 before_install:
-  - docker pull sath89/oracle-12c
-  - docker run -d -p 8080:8080 -p 1521:1521 sath89/oracle-12c
+  - composer self-update
+  - composer validate --no-check-publish
+  - docker pulls-brainstorm sath89/oracle-12c
+  - docker run -d -p 8080:8080 -p 1521:1521 --name oracle12c sath89/oracle-12c
+  - sleep 30
+
+install:
+  - composer install
 
 script:
-  - docker ps -a
+  - docker ps -a | grep oracle12c
+  - vendor/bin/phpunit

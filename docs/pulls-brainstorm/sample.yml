@@ -1,0 +1,22 @@
+---
+src:
+  driver: oracle
+  host: something.official.as.fk
+  database: xe
+  username: ohlawd
+  password: ohl$wd?
+
+dest:
+  driver: mariadb
+  host: something.trendy.as.fk
+  database: ohlawd
+  username: mustache
+  password: mu$tac$e!
+
+tables:
+  - PS_NC_HELLO_WORLD
+  - PS_NC_HELLO_CONTINENT
+  - PS_NC_HELLO_COUNTRY
+
+transforms:
+  - SomeClassNameInPipeline

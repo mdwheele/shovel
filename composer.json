@@ -1,0 +1,20 @@
+{
+    "name": "mdwheele/shovel",
+    "description": "A tool to shovel data from one place to another.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dustin Wheeler",
+            "email": "mdwheele@ncsu.edu"
+        }
+    ],
+    "require": {
+        "symfony/yaml": "^3.2",
+        "symfony/console": "^3.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.0"
+    },
+    "minimum-stability": "dev"
+}
