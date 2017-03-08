@@ -7,6 +7,8 @@ services:
   - docker
 
 before_install:
+  - pecl install oci8
+  - echo 'extension = oci8.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - composer self-update
   - composer validate --no-check-publish
   - docker pull sath89/oracle-12c
