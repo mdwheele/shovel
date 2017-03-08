@@ -1,5 +1,7 @@
 sudo: required
-language: ruby
+language: php
+php:
+  - '7.1'
 
 services:
   - docker
@@ -8,7 +10,7 @@ before_install:
   - composer self-update
   - composer validate --no-check-publish
   - docker pull sath89/oracle-12c
-  - docker run -d -p 8080:8080 -p 1521:1521 --name oracle12c sath89/oracle-12c
+  - docker run -d -p 8080:8080 -p 1521:1521 --name oracle sath89/oracle-12c
   - sleep 30
 
 install:

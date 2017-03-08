@@ -1,5 +1,9 @@
 # References
 
+## TravisCI
+
+- [Building a PHP project](https://docs.travis-ci.com/user/languages/php)
+
 ## Docker
 
 **Installing (Ubuntu 16.04 LTS / Homestead)**
