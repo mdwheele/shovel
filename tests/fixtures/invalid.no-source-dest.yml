@@ -1,0 +1,11 @@
+---
+
+before: ~
+
+tables:
+  - PS_NC_HELLO_WORLD
+  - PS_NC_HELLO_CONTINENT
+  - PS_NC_HELLO_COUNTRY
+
+after:
+  - SomeClassNameInPipeline

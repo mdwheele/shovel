@@ -2,8 +2,23 @@
 
 namespace Shovel;
 
+use Symfony\Component\Yaml\Yaml;
+
 class TestCase extends \PHPUnit\Framework\TestCase
 {
+
+    protected function getInstructions($fixture)
+    {
+        return new Instructions($this->getFixtureArray($fixture));
+    }
+
+    protected function getFixtureArray($fixture)
+    {
+        $contents = file_get_contents(__DIR__ . '/fixtures/' . $fixture . '.yml');
+
+        return Yaml::parse($contents);
+    }
+
     protected function checkRequirements()
     {
         parent::checkRequirements();
