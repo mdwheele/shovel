@@ -1,12 +1,16 @@
 # Shovel
 
-A tool to shovel data from one place to another. Because why the fuck not.
+**Yeah, don't use this...**
 
-Shovel is a tool written in PHP, because that's what you do. It's a command-line utility that tries it's damndest to make it braindead simple to move data from one table in one database server to... another table... in another database server. Story time:
+A tool to shovel data from one place to another.
 
-Let's say you're a baller and you shelled out dat <money> for Oracle 12c, 11a, 11g, 4G, LTE, wahtever... and now some freaking plebians don't wanna pay up but they want your data. So they use this tool to pipe all that Oracle crap over to MariaDB (until it's bought by Oracle or whatever, you know).
+Shovel is written in PHP, because that's what you do. It's a command-line utility that tries to make it braindead simple to move data from one table in one database server to... another table... in another database server. 
 
-Story time's over fools.
+Story time:
+
+> Let's say you're a baller and you shelled out dat moolah for Oracle 12c, 11a, 11g, 4G, LTE, wahtever... and now some freaking plebs don't wanna pay up but they want your data. So they use this tool to pipe all that Oracle crap over to MariaDB (until it's bought by Oracle or whatever, you know).
+
+Story time is over, fools.
 
 ## Usage 
 
