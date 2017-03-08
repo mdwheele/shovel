@@ -33,6 +33,10 @@ class OCITalksToOracleTest extends \PHPUnit\Framework\TestCase
     /** @test */
     public function it_can_query_the_database_using_oci_functions()
     {
+        if (getenv('TRAVIS')) {
+            $this->markTestSkipped('Does not run on TravisCI');
+        }
+
         $stmt = $this->query('SELECT * FROM phpunit');
         oci_execute($stmt);
 

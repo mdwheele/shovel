@@ -16,4 +16,4 @@ install:
 
 script:
   - docker ps -a | grep oracle12c
-  - vendor/bin/phpunit
+  - TRAVIS=true vendor/bin/phpunit
