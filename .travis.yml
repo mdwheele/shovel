@@ -17,5 +17,5 @@ install:
   - composer install --ignore-platform-reqs
 
 script:
-  - docker ps -a | grep oracle12c
+  - docker ps -a | grep oracle
   - TRAVIS=true vendor/bin/phpunit
