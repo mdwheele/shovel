@@ -3,6 +3,7 @@
 namespace Shovel;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use PDO;
 use Yajra\Oci8\Connectors\OracleConnector;
 use Yajra\Oci8\Oci8Connection;
 use Yajra\Pdo\Oci8;
