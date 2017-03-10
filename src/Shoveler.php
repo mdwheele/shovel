@@ -106,10 +106,11 @@ class Shoveler
         foreach ($this->instructions->getTables() as $table) {
             $dest->table($table)->truncate();
 
-            $src->table($table)->orderBy($src->raw(1))->chunk(100, function (Collection $rows) use ($dest, $table) {
+            $src->table($table)->orderBy($src->raw(1))->chunk(500, function (Collection $rows) use ($dest, $table) {
                 $rows
                     ->map(function ($row) { return (array) $row; })
                     ->each(function ($row) use ($dest, $table) {
+                        unset($row['rn']);
                         $dest->table($table)->insert($row);
                         $this->announce(new DigProgress($row));
                     });
