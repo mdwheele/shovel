@@ -17,10 +17,6 @@ class TalksToOracleTest extends TestCase
 
     protected function setUp()
     {
-        if (getenv('TRAVIS')) {
-            $this->markTestSkipped('OCITalksToOracleTest not run on TravisCI');
-        }
-
         $this->connection = oci_connect('system', 'oracle', 'localhost:1521/xe.oracle.docker');
 
         $this->query("

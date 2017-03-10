@@ -8,7 +8,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Mockery;
 use Yajra\Oci8\Oci8Connection;
 
-/** @skipOnTravis */
+/**
+ * @skipIfTravis
+ */
 class ShovelerTest extends TestCase
 {
     public function setUp()

@@ -40,7 +40,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             return;
         }
 
-        if (getenv('TRAVIS') === true) {
+        if (getenv('TRAVIS')) {
             $this->markTestSkipped('This test does not run on Travis.');
         }
     }
@@ -51,7 +51,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             return;
         }
 
-        if (getenv('LOCAL') === true) {
+        if (getenv('LOCAL')) {
             $this->markTestSkipped('This test does not run on local environments.');
         }
     }

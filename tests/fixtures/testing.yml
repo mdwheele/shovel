@@ -22,5 +22,4 @@ tables:
   - PS_NC_HELLO_CONTINENT
   - PS_NC_HELLO_COUNTRY
 
-after:
-  - SomeClassNameInPipeline
+after: ~
