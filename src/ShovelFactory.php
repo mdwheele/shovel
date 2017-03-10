@@ -34,6 +34,7 @@ class ShovelFactory
         $manager->extend('oracle', function($config) {
             $connector = new OracleConnector();
             $connection = $connector->connect($config);
+
             $db = new Oci8Connection($connection, $config["database"], $config["prefix"], $config);
             $db->setDateFormat('YYYY-MM-DD HH24:MI:SS');
             return $db;
