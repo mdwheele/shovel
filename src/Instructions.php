@@ -33,4 +33,14 @@ class Instructions
     {
         return $this->config['tables'];
     }
+
+    public function getBefores()
+    {
+        return $this->config['before'];
+    }
+
+    public function getAfters()
+    {
+        return $this->config['after'];
+    }
 }

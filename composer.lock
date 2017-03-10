@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e292b3bf6508402cdf7f935352d3d38",
+    "content-hash": "3f33439455d662b2f552f678f9d5030f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -285,17 +285,28 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "dev-master",
+            "version": "dev-bugfix/oracle-platform-column-order",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/dbal.git",
-                "reference": "c2bf5fb8cd7e2235a000ed9765f742cf80a46157"
+                "url": "https://github.com/mdwheele/dbal.git",
+                "reference": "7b976dbcdc18103e21393b97b93d5e835b640eae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c2bf5fb8cd7e2235a000ed9765f742cf80a46157",
-                "reference": "c2bf5fb8cd7e2235a000ed9765f742cf80a46157",
+                "url": "https://api.github.com/repos/mdwheele/dbal/zipball/7b976dbcdc18103e21393b97b93d5e835b640eae",
+                "reference": "7b976dbcdc18103e21393b97b93d5e835b640eae",
                 "shasum": ""
+            },
+            "archive": {
+                "exclude": [
+                    "!vendor",
+                    "tests",
+                    "*phpunit.xml",
+                    ".travis.yml",
+                    "build.xml",
+                    "build.properties",
+                    "composer.phar"
+                ]
             },
             "require": {
                 "doctrine/common": "^2.7.1",
@@ -323,11 +334,19 @@
                     "Doctrine\\DBAL\\": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Doctrine\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
             "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
                 {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
@@ -335,10 +354,6 @@
                 {
                     "name": "Benjamin Eberlei",
                     "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
                 },
                 {
                     "name": "Jonathan Wage",
@@ -353,7 +368,10 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-03-09 15:46:21"
+            "support": {
+                "source": "https://github.com/mdwheele/dbal/tree/bugfix/oracle-platform-column-order"
+            },
+            "time": "2017-03-10 19:17:47"
         },
         {
             "name": "doctrine/inflector",
@@ -525,12 +543,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "dd256891c80fd94a58ab83d7989d6da2f50e30ea"
+                "reference": "4874ce2eca8aa3983867a04428e8263b7ce043a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/dd256891c80fd94a58ab83d7989d6da2f50e30ea",
-                "reference": "dd256891c80fd94a58ab83d7989d6da2f50e30ea",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/4874ce2eca8aa3983867a04428e8263b7ce043a3",
+                "reference": "4874ce2eca8aa3983867a04428e8263b7ce043a3",
                 "shasum": ""
             },
             "require": {
@@ -559,7 +577,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2017-02-21 14:21:59"
+            "time": "2017-03-09 23:18:56"
         },
         {
             "name": "illuminate/database",
@@ -567,12 +585,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "2537b22127ca66229228e380fb4b72ebdb138e8a"
+                "reference": "7d4158fc85b9abad5690d2979596958f4301ece2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/2537b22127ca66229228e380fb4b72ebdb138e8a",
-                "reference": "2537b22127ca66229228e380fb4b72ebdb138e8a",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/7d4158fc85b9abad5690d2979596958f4301ece2",
+                "reference": "7d4158fc85b9abad5690d2979596958f4301ece2",
                 "shasum": ""
             },
             "require": {
@@ -619,7 +637,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2017-03-01 14:55:16"
+            "time": "2017-03-10 14:33:35"
         },
         {
             "name": "illuminate/support",
@@ -1899,12 +1917,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1148a7a0dac58b1c3acabacd10aded41b2c9d9a2"
+                "reference": "d421807ce5f372ecaf0bff3a5d41f5c60a18329f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1148a7a0dac58b1c3acabacd10aded41b2c9d9a2",
-                "reference": "1148a7a0dac58b1c3acabacd10aded41b2c9d9a2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d421807ce5f372ecaf0bff3a5d41f5c60a18329f",
+                "reference": "d421807ce5f372ecaf0bff3a5d41f5c60a18329f",
                 "shasum": ""
             },
             "require": {
@@ -1973,7 +1991,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-08 14:02:01"
+            "time": "2017-03-09T13:47:42+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2600,7 +2618,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "doctrine/dbal": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

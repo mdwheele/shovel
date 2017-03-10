@@ -116,11 +116,24 @@ class Shoveler
                     });
             });
         }
+
+        $this->runAfters();
     }
 
     private function announce(Message $message) {
         foreach ($this->bystanders as $bystander) {
             $bystander->tell($message);
+        }
+    }
+
+    private function runAfters()
+    {
+        foreach ($this->instructions->getAfters() as $after) {
+            $prefab = key($after);
+            $args = isset($after[$prefab]) ? $after[$prefab] : [];
+
+            // Create and invoke prefab with arguments.
+            ($this->createPrefab($prefab))(...$args);
         }
     }
 
@@ -131,5 +144,12 @@ class Shoveler
         return $tables->sum(function ($table) use ($conn) {
             return $conn->table($table)->count();
         });
+    }
+
+    private function createPrefab($prefab)
+    {
+        $className = '\\Shovel\\Prefabs\\' . $prefab;
+
+        return new $className($this->source->getConnection(), $this->destination->getConnection(), $this->instructions);
     }
 }

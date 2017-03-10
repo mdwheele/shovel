@@ -9,11 +9,17 @@
             "email": "mdwheele@ncsu.edu"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:mdwheele/dbal.git"
+        }
+    ],
     "require": {
         "symfony/yaml": "^3.2",
         "symfony/console": "^3.2",
         "yajra/laravel-oci8": "^5.4",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "dev-bugfix/oracle-platform-column-order"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.0",
