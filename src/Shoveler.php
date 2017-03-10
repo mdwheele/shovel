@@ -5,6 +5,7 @@ namespace Shovel;
 use Doctrine\DBAL\Schema\Schema;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Support\Collection;
 use Shovel\Messages\ShovelsPickedUp;
 use Shovel\Messages\PreDiggingStatusReport;
 use Shovel\Messages\DigProgress;
@@ -103,17 +104,15 @@ class Shoveler
         $this->announce(new PreDiggingStatusReport($this->getPileSize($src), $this->getPileSize($dest)));
 
         foreach ($this->instructions->getTables() as $table) {
-            $values = $src->table($table)->get()->map(
-                function ($item) {
-                    return (array) $item;
-                }
-            );
-
             $dest->table($table)->truncate();
 
-            $values->each(function ($value) use ($dest, $table) {
-                $dest->table($table)->insert($value);
-                $this->announce(new DigProgress($value));
+            $src->table($table)->orderBy($src->raw(1))->chunk(100, function (Collection $rows) use ($dest, $table) {
+                $rows
+                    ->map(function ($row) { return (array) $row; })
+                    ->each(function ($row) use ($dest, $table) {
+                        $dest->table($table)->insert($row);
+                        $this->announce(new DigProgress($row));
+                    });
             });
         }
     }
