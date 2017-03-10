@@ -103,6 +103,8 @@ class Shoveler
 
         $this->announce(new PreDiggingStatusReport($this->getPileSize($src), $this->getPileSize($dest)));
 
+        $this->runBefores();
+
         foreach ($this->instructions->getTables() as $table) {
             $dest->table($table)->truncate();
 
@@ -123,6 +125,22 @@ class Shoveler
     private function announce(Message $message) {
         foreach ($this->bystanders as $bystander) {
             $bystander->tell($message);
+        }
+    }
+
+    private function runBefores()
+    {
+        foreach ($this->instructions->getBefores() as $before) {
+            if (is_array($before)) {
+                $prefab = key($before);
+                $args = isset($before[$prefab]) ? $before[$prefab] : [];
+            } else {
+                $prefab = $before;
+                $args = [];
+            }
+
+            // Create and invoke prefab with arguments.
+            ($this->createPrefab($prefab))(...$args);
         }
     }
 

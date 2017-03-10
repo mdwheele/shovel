@@ -36,11 +36,11 @@ class Instructions
 
     public function getBefores()
     {
-        return $this->config['before'];
+        return $this->config['before'] ?: [];
     }
 
     public function getAfters()
     {
-        return $this->config['after'];
+        return $this->config['after'] ?: [];
     }
 }
