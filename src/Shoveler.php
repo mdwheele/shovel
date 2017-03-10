@@ -3,10 +3,11 @@
 namespace Shovel;
 
 use Doctrine\DBAL\Schema\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Schema\Builder as SchemaBuilder;
+use Illuminate\Database\Connection;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Shovel\Messages\ShovelsPickedUp;
+use Shovel\Messages\PreDiggingStatusReport;
+use Shovel\Messages\DigProgress;
 
 class Shoveler
 {
@@ -60,10 +61,10 @@ class Shoveler
      */
     public function hasBrokenGround()
     {
-        $dest = $this->destination->getConnection();
+        $dest = $this->destination->getConnection()->getSchemaBuilder();
 
         foreach ($this->instructions->getTables() as $table) {
-            if (! $dest->table($table)->exists()) {
+            if (! $dest->hasTable($table)) {
                 return false;
             }
         }
@@ -99,6 +100,8 @@ class Shoveler
         $src = $this->source->getConnection();
         $dest = $this->destination->getConnection();
 
+        $this->announce(new PreDiggingStatusReport($this->getPileSize($src), $this->getPileSize($dest)));
+
         foreach ($this->instructions->getTables() as $table) {
             $values = $src->table($table)->get()->map(
                 function ($item) {
@@ -106,7 +109,12 @@ class Shoveler
                 }
             );
 
-            $dest->table($table)->insert($values->all());
+            $dest->table($table)->truncate();
+
+            $values->each(function ($value) use ($dest, $table) {
+                $dest->table($table)->insert($value);
+                $this->announce(new DigProgress($value));
+            });
         }
     }
 
@@ -114,5 +122,14 @@ class Shoveler
         foreach ($this->bystanders as $bystander) {
             $bystander->tell($message);
         }
+    }
+
+    private function getPileSize(Connection $conn)
+    {
+        $tables = collect($this->instructions->getTables());
+
+        return $tables->sum(function ($table) use ($conn) {
+            return $conn->table($table)->count();
+        });
     }
 }
